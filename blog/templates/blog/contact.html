@@ -1,0 +1,83 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Contact Us - The Readers Hut{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 800px;">
+    <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;">Get in Touch</h1>
+    
+    <div style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-light);">
+            Have a question, book recommendation, or just want to say hello? We'd love to hear from you!
+        </p>
+        
+        <form method="post" style="margin-bottom: 3rem;">
+            {% csrf_token %}
+            
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Name</label>
+                {{ form.name }}
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email</label>
+                {{ form.email }}
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Subject</label>
+                {{ form.subject }}
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message</label>
+                {{ form.message }}
+            </div>
+            
+            <button type="submit" style="width: 100%; padding: 1rem; background: var(--secondary); color: white; border: none; border-radius: 5px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+                <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+        </form>
+        
+        <div style="border-top: 2px solid var(--border); padding-top: 2rem;">
+            <h3 style="text-align: center; margin-bottom: 1.5rem;">Other Ways to Reach Us</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: center;">
+                <div>
+                    <i class="fas fa-envelope" style="font-size: 2rem; color: var(--secondary); margin-bottom: 0.5rem;"></i>
+                    <p style="font-weight: 600; margin-bottom: 0.25rem;">Email</p>
+                    <a href="mailto:thereadershut@gmail.com">thereadershut@gmail.com</a>
+                </div>
+                <div>
+                    <i class="fas fa-clock" style="font-size: 2rem; color: var(--secondary); margin-bottom: 0.5rem;"></i>
+                    <p style="font-weight: 600; margin-bottom: 0.25rem;">Hours</p>
+                    <p style="color: var(--text-light);">10am - 7pm (WAT)</p>
+                </div>
+                <div>
+                    <i class="fas fa-users" style="font-size: 2rem; color: var(--secondary); margin-bottom: 0.5rem;"></i>
+                    <p style="font-weight: 600; margin-bottom: 0.25rem;">Social Media</p>
+                    <div>
+                        <a href="https://instagram.com/thereadershut" style="margin: 0 0.5rem;"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="https://twitter.com/thereadershut" style="margin: 0 0.5rem;"><i class="fab fa-twitter"></i> Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    input[type="text"], input[type="email"], textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid var(--border);
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: 'Inter', sans-serif;
+    }
+    
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: var(--secondary);
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ category.name }} - The Readers Hut{% endblock %}
+{% block meta_description %}{{ category.meta_description }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">{{ category.name }}</h1>
+        {% if category.description %}
+        <p style="font-size: 1.2rem; color: var(--text-light); max-width: 700px; margin: 0 auto;">
+            {{ category.description }}
+        </p>
+        {% endif %}
+    </div>
+    
+    <!-- Posts Grid -->
+    <div class="post-grid">
+        {% for post in posts %}
+        <article class="post-card">
+            {% if post.featured_image %}
+            <img src="{{ post.featured_image.url }}" alt="{{ post.featured_image_alt }}" class="post-card-image">
+            {% else %}
+            <div class="post-card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+            {% endif %}
+            <div class="post-card-content">
+                <span class="post-category">{{ post.category.name }}</span>
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                <p class="post-excerpt">{{ post.excerpt }}</p>
+                <div class="post-meta">
+                    <span><i class="fas fa-calendar"></i> {{ post.published_date|date:"M d, Y" }}</span>
+                    <span><i class="fas fa-eye"></i> {{ post.views }} views</span>
+                </div>
+                <a href="{{ post.get_absolute_url }}" class="read-more">Read More</a>
+            </div>
+        </article>
+        {% empty %}
+        <p style="text-align: center; grid-column: 1/-1; font-size: 1.2rem; color: var(--text-light);">
+            No posts in this category yet. Check back soon!
+        </p>
+        {% endfor %}
+    </div>
+    
+    <!-- Pagination -->
+    {% if posts.has_other_pages %}
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 3rem;">
+        {% if posts.has_previous %}
+        <a href="?page={{ posts.previous_page_number }}" style="padding: 0.5rem 1rem; background: var(--secondary); color: white; border-radius: 5px;">
+            <i class="fas fa-chevron-left"></i> Previous
+        </a>
+        {% endif %}
+        
+        <span style="color: var(--text-light);">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</span>
+        
+        {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}" style="padding: 0.5rem 1rem; background: var(--secondary); color: white; border-radius: 5px;">
+            Next <i class="fas fa-chevron-right"></i>
+        </a>
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    <!-- Browse Other Categories -->
+    <div style="margin-top: 4rem; padding: 2rem; background: var(--bg-light); border-radius: 12px; text-align: center;">
+        <h3 style="margin-bottom: 1.5rem;">Browse Other Categories</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+            {% for cat in categories %}
+            {% if cat.slug != category.slug %}
+            <a href="{% url 'blog:category' cat.slug %}" style="padding: 0.75rem 1.5rem; background: white; border-radius: 25px; border: 2px solid var(--border); font-weight: 500;">
+                {{ cat.name }}
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

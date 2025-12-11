@@ -1,0 +1,155 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}The Readers Hut - Your Literary Journey Starts Here{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Discover Books That Transform Your Reading Journey</h1>
+        <p>Discover captivating book reviews, join our vibrant reading community, and explore the world of literature</p>
+        <a href="{% url 'blog:post_list' %}" class="read-more" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+            Explore Our Blog <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="{% url 'blog:post_list' %}" class="read-more" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+            Visit Our Bookstore <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    <div class="hero-image">
+        <img src="/static/images/hero_section.jpeg" alt="hero image">
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+        <div style="background: linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%); padding: 2.5rem; border-radius: 24px; text-align: center; border: 1px solid rgba(147, 197, 253, 0.3); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(59, 130, 246, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: #0F172A; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: white;">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h3 style="font-size: 2.5rem; margin-bottom: 0.5rem; background: #0F172A; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">100+</h3>
+            <p style="color: var(--text-light); font-weight: 600;">Books Reviewed</p>
+        </div>
+        <div style="background: linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%); padding: 2.5rem; border-radius: 24px; text-align: center; border: 1px solid rgba(147, 197, 253, 0.3); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(59, 130, 246, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: #0F172A; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: white;">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3 style="font-size: 2.5rem; margin-bottom: 0.5rem; background: #0F172A; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">100+</h3>
+            <p style="color: var(--text-light); font-weight: 600;">Community Members</p>
+        </div>
+        <div style="background: linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%); padding: 2.5rem; border-radius: 24px; text-align: center; border: 1px solid rgba(147, 197, 253, 0.3); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(59, 130, 246, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: #0F172A; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: white;">
+                <i class="fas fa-star"></i>
+            </div>
+            <h3 style="font-size: 2.5rem; margin-bottom: 0.5rem; background: #0F172A; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">4.9/5</h3>
+            <p style="color: var(--text-light); font-weight: 600;">Average Rating</p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Posts -->
+{% if featured_posts %}
+<section class="container">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: 3.5rem; margin-bottom: 1rem; background: var(--gradient-blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Featured Reviews</h2>
+        <p style="font-size: 1.2rem; color: var(--text-light); max-width: 700px; margin: 0 auto;">Dive into our handpicked selection of the best book reviews from our community</p>
+    </div>
+    <div class="post-grid">
+        {% for post in featured_posts %}
+        <article class="post-card">
+            {% if post.featured_image %}
+            <img src="{{ post.featured_image.url }}" alt="{{ post.featured_image_alt }}" class="post-card-image">
+            {% else %}
+            <div class="post-card-image" style="background: var(--gradient-blue); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                <i class="fas fa-book"></i>
+            </div>
+            {% endif %}
+            <div class="post-card-content">
+                <span class="post-category">{{ post.category.name }}</span>
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                <p class="post-excerpt">{{ post.excerpt }}</p>
+                <div class="post-meta">
+                    <span><i class="fas fa-calendar"></i> {{ post.published_date|date:"M d, Y" }}</span>
+                    <span><i class="fas fa-eye"></i> {{ post.views }} views</span>
+                </div>
+                <a href="{{ post.get_absolute_url }}" class="read-more">
+                    Read Review <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Recent Posts -->
+<section class="container">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: 3.5rem; margin-bottom: 1rem; background: #0F172A; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Latest Book Reviews</h2>
+        <p style="font-size: 1.2rem; color: var(--text-light); max-width: 700px; margin: 0 auto;">Fresh perspectives on the newest releases and timeless classics</p>
+    </div>
+    <div class="post-grid">
+        {% for post in recent_posts %}
+        <article class="post-card">
+            {% if post.featured_image %}
+            <img src="{{ post.featured_image.url }}" alt="{{ post.featured_image_alt }}" class="post-card-image">
+            {% else %}
+            <div class="post-card-image" style="background: var(--gradient-1); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                <i class="fas fa-book"></i>
+            </div>
+            {% endif %}
+            <div class="post-card-content">
+                <span class="post-category">{{ post.category.name }}</span>
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                <p class="post-excerpt">{{ post.excerpt }}</p>
+                <div class="post-meta">
+                    <span><i class="fas fa-calendar"></i> {{ post.published_date|date:"M d, Y" }}</span>
+                    <span><i class="fas fa-eye"></i> {{ post.views }} views</span>
+                </div>
+                <a href="{{ post.get_absolute_url }}" class="read-more">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    <div style="text-align: center; margin-top: 4rem;">
+        <a href="{% url 'blog:post_list' %}" class="read-more" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+            View All Posts <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="container">
+    <div style="background: linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%); padding: 5rem 3rem; border-radius: 32px; border: 1px solid rgba(147, 197, 253, 0.3);">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h2 style="font-size: 3.5rem; margin-bottom: 1rem;">Why Join The Readers Hut?</h2>
+            <p style="font-size: 1.2rem; color: var(--text-light); max-width: 700px; margin: 0 auto;">Discover what makes our community special</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            <div style="text-align: center;">
+                <div style="width: 100px; height: 100px; margin: 0 auto 1.5rem; background: var(--gradient-blue); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Passionate Reviews</h3>
+                <p style="color: var(--text-light); line-height: 1.8;">Authentic, heartfelt reviews from real readers who love books as much as you do</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="width: 100px; height: 100px; margin: 0 auto 1.5rem; background: var(--gradient-2); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; box-shadow: 0 10px 30px rgba(125, 211, 252, 0.3);">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Nigerian Focus</h3>
+                <p style="color: var(--text-light); line-height: 1.8;">Celebrating African literature while bringing global stories to Nigerian readers</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="width: 100px; height: 100px; margin: 0 auto 1.5rem; background: var(--gradient-3); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Active Community</h3>
+                <p style="color: var(--text-light); line-height: 1.8;">Join discussions, share recommendations, and connect with fellow book enthusiasts</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}About Us - The Readers Hut{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 900px;">
+    <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;">About The Readers Hut</h1>
+    
+    <div style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <section style="margin-bottom: 3rem;">
+            <h2 style="color: var(--secondary); margin-bottom: 1rem;">Our Story</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                Welcome to The Readers Hut, your premier destination for honest book reviews, literary discussions, and a vibrant reading community. Founded by Nwaeke Chinaza Fortune, a passionate Nigerian pharmacist and entrepreneur based in Port Harcourt, our journey began in 2018 with a simple mission: to make quality books more accessible to Nigerian readers.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                What started as a small community of book lovers on Instagram has evolved into a thriving online bookstore and reading platform that connects thousands of readers across Nigeria and beyond. We believe that every book has a story to tell, and every reader deserves access to those stories.
+            </p>
+        </section>
+        
+        <section style="margin-bottom: 3rem;">
+            <h2 style="color: var(--secondary); margin-bottom: 1rem;">What We Do</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="padding: 1.5rem; background: var(--bg-light); border-radius: 8px;">
+                    <i class="fas fa-book-open" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Honest Reviews</h3>
+                    <p style="color: var(--text-light);">Authentic, relatable book reviews that help you discover your next favorite read.</p>
+                </div>
+                <div style="padding: 1.5rem; background: var(--bg-light); border-radius: 8px;">
+                    <i class="fas fa-users" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Reading Community</h3>
+                    <p style="color: var(--text-light);">A vibrant book club where readers connect, discuss, and share their love for literature.</p>
+                </div>
+                <div style="padding: 1.5rem; background: var(--bg-light); border-radius: 8px;">
+                    <i class="fas fa-shopping-cart" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Book Accessibility</h3>
+                    <p style="color: var(--text-light);">Making quality books accessible to Nigerian readers through our online bookstore.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section style="margin-bottom: 3rem;">
+            <h2 style="color: var(--secondary); margin-bottom: 1rem;">Our Values</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 1.1rem;">
+                    <i class="fas fa-check-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>
+                    <strong>Authenticity:</strong> We provide genuine, heartfelt reviews without pretense
+                </li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 1.1rem;">
+                    <i class="fas fa-check-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>
+                    <strong>Community:</strong> Building connections among book lovers across borders
+                </li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 1.1rem;">
+                    <i class="fas fa-check-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>
+                    <strong>Accessibility:</strong> Making literature available to everyone
+                </li>
+                <li style="padding: 0.75rem 0; font-size: 1.1rem;">
+                    <i class="fas fa-check-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>
+                    <strong>Diversity:</strong> Celebrating books from all cultures and perspectives
+                </li>
+            </ul>
+        </section>
+        
+        <section style="margin-bottom: 3rem;">
+            <h2 style="color: var(--secondary); margin-bottom: 1rem;">Meet the Founder</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                <strong>Nwaeke Chinaza Fortune</strong> is a Nigerian pharmacist, entrepreneur, and passionate reader who transformed her love for books into a thriving community. Despite the challenges of book pricing and logistics in Nigeria, Chinaza has successfully grown The Readers Hut from a simple Instagram page into a comprehensive platform serving thousands of book lovers.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                When not reviewing books or running the bookstore, you'll find Chinaza sharing her thoughts on literature, contributing to platforms like BellaNaija, and building connections within the Nigerian literary community.
+            </p>
+        </section>
+        
+        <section style="background: var(--bg-light); padding: 2rem; border-radius: 8px; text-align: center;">
+            <h2 style="margin-bottom: 1rem;">Join Our Community</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                Whether you're looking for your next great read or want to connect with fellow book lovers, The Readers Hut is your home.
+            </p>
+            <a href="{% url 'blog:contact' %}" class="read-more" style="padding: 0.75rem 2rem; font-size: 1rem;">Get in Touch</a>
+        </section>
+    </div>
+</div>
+{% endblock %}
