@@ -181,3 +181,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_NAME = 'The Readers Hut'
 SITE_DESCRIPTION = 'Your premier destination for book reviews, reading recommendations, and literary discussions in Nigeria and beyond.'
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
