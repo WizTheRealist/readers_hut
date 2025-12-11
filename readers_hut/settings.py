@@ -36,6 +36,10 @@ ALLOWED_HOSTS = [
     'localhost',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://readers-hut.onrender.com',
+]
+
 
 # Application definition
 
