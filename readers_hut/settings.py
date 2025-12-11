@@ -155,6 +155,8 @@ SITE_ID = 1
 
 CKEDITOR_5_CUSTOM_CSS = '/static/css/ckeditor_custom.css'
 
+CKEDITOR_5_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': [
@@ -168,8 +170,8 @@ CKEDITOR_5_CONFIGS = {
             ]
         },
         'upload_image': True,
-        'image_backend': 'cloudinary',
-        'upload_url': '/ckeditor5/upload/',
+        #'image_backend': 'cloudinary',
+        #'upload_url': '/ckeditor5/upload/',
         # Add this to fix text visibility
         'editor_css': '/static/css/ckeditor_custom.css',
     }
