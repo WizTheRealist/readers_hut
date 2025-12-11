@@ -165,6 +165,8 @@ CKEDITOR_5_CUSTOM_CLOUDINARY_FILE_NAME = True
 
 CKEDITOR_5_UPLOAD_URL = "ckeditor5/image_upload/"
 
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"
+
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': [
