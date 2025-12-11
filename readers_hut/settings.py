@@ -171,7 +171,10 @@ CKEDITOR_5_CONFIGS = {
         'image': {
             'toolbar': [
                 'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
-            ]
+            ],
+            'upload': {
+                'types': ['jpeg', 'png', 'gif', 'bmp', 'webp', 'svg+xml']
+            }
         },
         'upload_image': True,
         #'image_backend': 'cloudinary',
@@ -181,11 +184,21 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 
+# Cloudinary library configuration
 cloudinary.config(
     cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
     api_key=os.getenv("CLOUDINARY_API_KEY"),
     api_secret=os.getenv("CLOUDINARY_API_SECRET"),
 )
+
+# Django Cloudinary Storage configuration
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY': os.getenv("CLOUDINARY_API_KEY"),
+    'API_SECRET': os.getenv("CLOUDINARY_API_SECRET"),
+    'ALLOWED_FORMATS': ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
+    'RESOURCE_TYPE': 'auto',
+}
 
 
 
