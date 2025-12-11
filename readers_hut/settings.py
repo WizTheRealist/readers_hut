@@ -133,8 +133,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = BASE_DIR / 'media'
 
 
 
@@ -168,6 +168,8 @@ CKEDITOR_5_CONFIGS = {
             ]
         },
         'upload_image': True,
+        'image_backend': 'cloudinary',
+        'upload_url': '/ckeditor5/upload/',
         # Add this to fix text visibility
         'editor_css': '/static/css/ckeditor_custom.css',
     }
