@@ -31,9 +31,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = [
-    'readers-hut.onrender.com',
-    '127.0.0.1',
-    'localhost',
+    '.vercel.app'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
