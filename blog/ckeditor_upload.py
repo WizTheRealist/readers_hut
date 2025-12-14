@@ -31,3 +31,15 @@ def upload_image(request):
             })
     
     return JsonResponse({'uploaded': 0, 'error': {'message': 'No file uploaded'}})
+
+    # In blog/ckeditor_upload.py
+@staff_member_required
+def debug_cloudinary(request):
+    config = cloudinary.config()
+    return JsonResponse({
+        'cloud_name': config.cloud_name,
+        'api_key': config.api_key[:5] + '***' if config.api_key else None,
+        'api_secret': '***' if config.api_secret else None,
+        'env_cloud_name': os.getenv("CLOUDINARY_CLOUD_NAME"),
+        'env_api_key': os.getenv("CLOUDINARY_API_KEY")[:5] + '***' if os.getenv("CLOUDINARY_API_KEY") else None,
+    })

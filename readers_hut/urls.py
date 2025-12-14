@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap, CategorySitemap
-from blog.ckeditor_upload import upload_image
+from blog.ckeditor_upload import upload_image, debug_cloudinary
 
 sitemaps = {
     'posts': PostSitemap,
@@ -32,6 +32,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
     path('ckeditor5/image_upload/', upload_image, name='ckeditor_upload'),
+    path('debug-cloudinary/', debug_cloudinary),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
 
