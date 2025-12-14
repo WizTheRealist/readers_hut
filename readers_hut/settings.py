@@ -184,6 +184,9 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 
+CKEDITOR_5_IMAGE_URL = "https://res.cloudinary.com/dzy5ipgwv/image/upload/"
+
+
 # Cloudinary library configuration
 cloudinary.config(
     cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
