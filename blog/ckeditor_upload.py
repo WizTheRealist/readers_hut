@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.admin.views.decorators import staff_member_required
 import cloudinary.uploader
+import os
 
 @staff_member_required
 @csrf_exempt
