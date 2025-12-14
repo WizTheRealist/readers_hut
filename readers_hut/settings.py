@@ -30,13 +30,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = [
-    '.vercel.app'
-]
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://readers-hut.onrender.com',
-]
+CSRF_TRUSTED_ORIGINS = ['*']
 
 
 # Application definition
@@ -135,8 +131,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-#MEDIA_URL = '/media/'
-#MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 
@@ -157,9 +153,9 @@ SITE_ID = 1
 
 CKEDITOR_5_CUSTOM_CSS = '/static/css/ckeditor_custom.css'
 
-CKEDITOR_5_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 
-CKEDITOR_5_CUSTOM_CLOUDINARY_FILE_NAME = True
+CKEDITOR_5_UPLOAD_PATH = "ckeditor_uploads/"
 
 CKEDITOR_5_UPLOAD_URL = "ckeditor5/image_upload/"
 
