@@ -131,9 +131,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+if DEBUG:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 
 
@@ -157,11 +157,11 @@ CKEDITOR_5_CUSTOM_CSS = '/static/css/ckeditor_custom.css'
 #CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 CKEDITOR_5_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
-CKEDITOR_5_UPLOAD_PATH = "ckeditor_uploads/"
+#CKEDITOR_5_UPLOAD_PATH = "ckeditor_uploads/"
 
-CKEDITOR_5_UPLOAD_URL = "ckeditor5/image_upload/"
+#CKEDITOR_5_UPLOAD_URL = "ckeditor5/image_upload/"
 
-CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"
+#CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"
 
 CKEDITOR_5_CONFIGS = {
     'default': {
@@ -186,7 +186,7 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 
-CKEDITOR_5_IMAGE_URL = "https://res.cloudinary.com/dzy5ipgwv/image/upload/"
+#CKEDITOR_5_IMAGE_URL = "https://res.cloudinary.com/dzy5ipgwv/image/upload/"
 
 
 # Cloudinary library configuration

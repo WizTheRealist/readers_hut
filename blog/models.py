@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 from taggit.managers import TaggableManager
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -43,7 +44,7 @@ class Post(models.Model):
     excerpt = models.TextField(max_length=300, help_text='Brief summary for preview cards')
     content = CKEditor5Field('Content')
     
-    featured_image = models.ImageField(upload_to='blog_images/%Y/%m/', blank=True)
+    featured_image = CloudinaryField('image', blank=True, folder='blog_images')
     featured_image_alt = models.CharField(max_length=200, blank=True)
     
     tags = TaggableManager(blank=True)
