@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap, CategorySitemap
+from blog.ckeditor_upload import upload_image
 
 sitemaps = {
     'posts': PostSitemap,
@@ -30,6 +31,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
+    path('ckeditor5/image_upload/', upload_image, name='ckeditor_upload'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
 
