@@ -64,4 +64,23 @@
     </div>
     {% endif %}
 </div>
+<style>
+    @media (max-width: 600px) {
+        .search-form {
+            flex-direction: column;
+            border-radius: 16px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+        }
+
+        .search-btn {
+            width: 100%;
+            padding: 1rem;
+            transform: none;
+        }
+    }
+</style>
 {% endblock %}
