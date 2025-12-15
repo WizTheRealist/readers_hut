@@ -30,9 +30,9 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
-    path("ckeditor5/", include('django_ckeditor_5.urls')),
     path('ckeditor5/image_upload/', upload_image, name='ckeditor_upload'),
     path('debug-cloudinary/', debug_cloudinary),
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
 
